@@ -1,0 +1,41 @@
+<h1>Listing innings</h1>
+
+<table>
+  <tr>
+    <th>Which inning</th>
+    <th>Overs</th>
+    <th>Wides</th>
+    <th>Noballs</th>
+    <th>Legbyes</th>
+    <th>Byes</th>
+    <th>Extras</th>
+    <th>Score</th>
+    <th>Bowled out</th>
+    <th>Summary</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @innings.each do |inning| %>
+  <tr>
+    <td><%= inning.which_inning %></td>
+    <td><%= inning.overs %></td>
+    <td><%= inning.wides %></td>
+    <td><%= inning.noballs %></td>
+    <td><%= inning.legbyes %></td>
+    <td><%= inning.byes %></td>
+    <td><%= inning.extras %></td>
+    <td><%= inning.score %></td>
+    <td><%= inning.bowled_out %></td>
+    <td><%= inning.summary %></td>
+    <td><%= link_to 'Show', inning %></td>
+    <td><%= link_to 'Edit', edit_inning_path(inning) %></td>
+    <td><%= link_to 'Destroy', inning, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Inning', new_inning_path %>

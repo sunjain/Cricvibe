@@ -1,0 +1,57 @@
+<%= form_for(@inning) do |f| %>
+  <% if @inning.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@inning.errors.count, "error") %> prohibited this inning from being saved:</h2>
+
+      <ul>
+      <% @inning.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :which_inning %><br />
+    <%= f.text_field :which_inning %>
+  </div>
+  <div class="field">
+    <%= f.label :overs %><br />
+    <%= f.text_field :overs %>
+  </div>
+  <div class="field">
+    <%= f.label :wides %><br />
+    <%= f.text_field :wides %>
+  </div>
+  <div class="field">
+    <%= f.label :noballs %><br />
+    <%= f.text_field :noballs %>
+  </div>
+  <div class="field">
+    <%= f.label :legbyes %><br />
+    <%= f.text_field :legbyes %>
+  </div>
+  <div class="field">
+    <%= f.label :byes %><br />
+    <%= f.text_field :byes %>
+  </div>
+  <div class="field">
+    <%= f.label :extras %><br />
+    <%= f.text_field :extras %>
+  </div>
+  <div class="field">
+    <%= f.label :score %><br />
+    <%= f.text_field :score %>
+  </div>
+  <div class="field">
+    <%= f.label :bowled_out %><br />
+    <%= f.check_box :bowled_out %>
+  </div>
+  <div class="field">
+    <%= f.label :summary %><br />
+    <%= f.text_area :summary %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

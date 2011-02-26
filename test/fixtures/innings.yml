@@ -1,0 +1,25 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  which_inning: 1
+  overs: 1.5
+  wides: 1
+  noballs: 1
+  legbyes: 1
+  byes: 1
+  extras: 
+  score: 1
+  bowled_out: false
+  summary: MyText
+
+two:
+  which_inning: 1
+  overs: 1.5
+  wides: 1
+  noballs: 1
+  legbyes: 1
+  byes: 1
+  extras: 
+  score: 1
+  bowled_out: false
+  summary: MyText

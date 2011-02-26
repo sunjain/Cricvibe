@@ -1,0 +1,53 @@
+<%= form_for(@batting_performance) do |f| %>
+  <% if @batting_performance.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@batting_performance.errors.count, "error") %> prohibited this batting_performance from being saved:</h2>
+
+      <ul>
+      <% @batting_performance.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :runs %><br />
+    <%= f.text_field :runs %>
+  </div>
+  <div class="field">
+    <%= f.label :balls %><br />
+    <%= f.text_field :balls %>
+  </div>
+  <div class="field">
+    <%= f.label :mins %><br />
+    <%= f.text_field :mins %>
+  </div>
+  <div class="field">
+    <%= f.label :fours %><br />
+    <%= f.text_field :fours %>
+  </div>
+  <div class="field">
+    <%= f.label :sixes %><br />
+    <%= f.text_field :sixes %>
+  </div>
+  <div class="field">
+    <%= f.label :singles %><br />
+    <%= f.text_field :singles %>
+  </div>
+  <div class="field">
+    <%= f.label :doubles %><br />
+    <%= f.text_field :doubles %>
+  </div>
+  <div class="field">
+    <%= f.label :triples %><br />
+    <%= f.text_field :triples %>
+  </div>
+  <div class="field">
+    <%= f.label :dot_balls %><br />
+    <%= f.text_field :dot_balls %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,25 @@
+<h1>Listing dismissals</h1>
+
+<table>
+  <tr>
+    <th>Type</th>
+    <th>Description</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @dismissals.each do |dismissal| %>
+  <tr>
+    <td><%= dismissal.type %></td>
+    <td><%= dismissal.description %></td>
+    <td><%= link_to 'Show', dismissal %></td>
+    <td><%= link_to 'Edit', edit_dismissal_path(dismissal) %></td>
+    <td><%= link_to 'Destroy', dismissal, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Dismissal', new_dismissal_path %>

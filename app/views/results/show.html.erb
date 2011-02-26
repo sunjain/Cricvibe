@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Type:</b>
+  <%= @result.type %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @result.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_result_path(@result) %> |
+<%= link_to 'Back', results_path %>

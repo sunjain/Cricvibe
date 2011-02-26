@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  overs: 1.5
+  wickets: 1
+  runs: 1
+  maidens: 1
+  wides: 1
+  noballs: 1
+  legbyes: 1
+  extras: 1
+
+two:
+  overs: 1.5
+  wickets: 1
+  runs: 1
+  maidens: 1
+  wides: 1
+  noballs: 1
+  legbyes: 1
+  extras: 1

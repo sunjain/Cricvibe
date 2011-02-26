@@ -1,0 +1,9 @@
+rails generate migration RemovePlayer12FromTeam player12:string
+rails generate migration RemovePlayer13FromTeam player13:string
+rails generate migration RemovePlayer14FromTeam player14:string
+rails generate migration RemovePlayer15FromTeam player15:string
+rails generate migration RemovePlayer16FromTeam player16:string
+rails generate migration RemovePlayer17FromTeam player17:string
+rails generate migration RemovePlayer18FromTeam player18:string
+rails generate migration RemovePlayer19FromTeam player19:string
+rails generate migration RemovePlayer20FromTeam player20:string

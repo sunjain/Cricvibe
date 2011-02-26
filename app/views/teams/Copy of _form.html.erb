@@ -1,0 +1,46 @@
+<%= form_for(@team) do |f| %>
+  <% if @team.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@team.errors.count, "error") %> prohibited this team from being saved:</h2>
+
+      <ul>
+      <% @team.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+	</div>
+
+<table style='margin-left:80px;'>  
+	<tr><th>Player1:</th><td><%= text_field(:player1, :name, :size => 40) %></td></tr>
+	<tr><th>Player2:</th><td><%= text_field(:player2, :name, :size => 40) %></td></tr>
+	<tr><th>Player3:</th><td><%= text_field(:player3, :name, :size => 40) %></td></tr>
+	<tr><th>Player4:</th><td><%= text_field(:player4, :name, :size => 40) %></td></tr>
+	<tr><th>Player5:</th><td><%= text_field(:player5, :name, :size => 40) %></td></tr>
+	<tr><th>Player6:</th><td><%= text_field(:player6, :name, :size => 40) %></td></tr>
+	<tr><th>Player7:</th><td><%= text_field(:player7, :name, :size => 40) %></td></tr>
+	<tr><th>Player8:</th><td><%= text_field(:player8, :name, :size => 40) %></td></tr>
+	<tr><th>Player9:</th><td><%= text_field(:player9, :name, :size => 40) %></td></tr>
+	<tr><th>Player10:</th><td><%= text_field(:player10, :name, :size => 40) %></td></tr>
+	<tr><th>Player11:</th><td><%= text_field(:player11, :name, :size => 40) %></td></tr>
+	<tr><th>Player12:</th><td><%= text_field(:player12, :name, :size => 40) %></td></tr>
+	<tr><th>Player13:</th><td><%= text_field(:player13, :name, :size => 40) %></td></tr>
+	<tr><th>Player14:</th><td><%= text_field(:player14, :name, :size => 40) %></td></tr>
+	<tr><th>Player15:</th><td><%= text_field(:player15, :name, :size => 40) %></td></tr>
+	<tr><th>Player16:</th><td><%= text_field(:player16, :name, :size => 40) %></td></tr>
+	<tr><th>Player17:</th><td><%= text_field(:player17, :name, :size => 40) %></td></tr>
+	<tr><th>Player18:</th><td><%= text_field(:player18, :name, :size => 40) %></td></tr>
+	<tr><th>Player19:</th><td><%= text_field(:player19, :name, :size => 40) %></td></tr>
+	<tr><th>Player20:</th><td><%= text_field(:player20, :name, :size => 40) %></td></tr>
+</table>
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

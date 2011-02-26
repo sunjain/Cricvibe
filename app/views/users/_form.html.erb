@@ -1,0 +1,53 @@
+<div class="generic_form" >
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+	
+	<fieldset>
+		<legend>Enter User Details</legend>
+
+  <div class="field">
+    <%= f.label :userid, 'Login ID'%><br />
+    <%= f.text_field :userid %>
+  </div>
+  <div class="field">
+    <%= f.label :password,'Password' %><br />
+		<%= f.text_field :password, :size => 40 %>
+  </div>
+  <div class="field">
+		<%= f.label :password_confirmation, 'Confirm', :size => 40 %><br />
+    <%= f.text_field :password_confirmation %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :phone_home %><br />
+    <%= f.text_field :phone_home %>
+  </div>
+  <div class="field">
+    <%= f.label :phone_cell %><br />
+    <%= f.text_field :phone_cell %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+	</div>
+
+	</fieldset>
+<% end %>
+
+</div>

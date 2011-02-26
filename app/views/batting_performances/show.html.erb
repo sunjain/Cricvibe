@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Runs:</b>
+  <%= @batting_performance.runs %>
+</p>
+
+<p>
+  <b>Balls:</b>
+  <%= @batting_performance.balls %>
+</p>
+
+<p>
+  <b>Mins:</b>
+  <%= @batting_performance.mins %>
+</p>
+
+<p>
+  <b>Fours:</b>
+  <%= @batting_performance.fours %>
+</p>
+
+<p>
+  <b>Sixes:</b>
+  <%= @batting_performance.sixes %>
+</p>
+
+<p>
+  <b>Singles:</b>
+  <%= @batting_performance.singles %>
+</p>
+
+<p>
+  <b>Doubles:</b>
+  <%= @batting_performance.doubles %>
+</p>
+
+<p>
+  <b>Triples:</b>
+  <%= @batting_performance.triples %>
+</p>
+
+<p>
+  <b>Dot balls:</b>
+  <%= @batting_performance.dot_balls %>
+</p>
+
+
+<%= link_to 'Edit', edit_batting_performance_path(@batting_performance) %> |
+<%= link_to 'Back', batting_performances_path %>

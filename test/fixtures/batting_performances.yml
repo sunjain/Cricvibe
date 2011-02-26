@@ -1,0 +1,23 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  runs: 1
+  balls: 1
+  mins: 1
+  fours: 1
+  sixes: 1
+  singles: 1
+  doubles: 1
+  triples: 1
+  dot_balls: 1
+
+two:
+  runs: 1
+  balls: 1
+  mins: 1
+  fours: 1
+  sixes: 1
+  singles: 1
+  doubles: 1
+  triples: 1
+  dot_balls: 1

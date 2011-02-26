@@ -1,0 +1,69 @@
+<%= form_for(@team_for_the_match) do |f| %>
+  <% if @team_for_the_match.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@team_for_the_match.errors.count, "error") %> prohibited this team_for_the_match from being saved:</h2>
+
+      <ul>
+      <% @team_for_the_match.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :team_id %><br />
+    <%= f.text_field :team_id %>
+  </div>
+  <div class="field">
+    <%= f.label :match_id %><br />
+    <%= f.text_field :match_id %>
+  </div>
+  <div class="field">
+    <%= f.label :player1_id %><br />
+    <%= f.text_field :player1_id %>
+  </div>
+  <div class="field">
+    <%= f.label :player2_id %><br />
+    <%= f.text_field :player2_id %>
+  </div>
+  <div class="field">
+    <%= f.label :player3_id %><br />
+    <%= f.text_field :player3_id %>
+  </div>
+  <div class="field">
+    <%= f.label :player4_id %><br />
+    <%= f.text_field :player4_id %>
+  </div>
+  <div class="field">
+    <%= f.label :player5_id %><br />
+    <%= f.text_field :player5_id %>
+  </div>
+  <div class="field">
+    <%= f.label :player6_id %><br />
+    <%= f.text_field :player6_id %>
+  </div>
+  <div class="field">
+    <%= f.label :player7_id %><br />
+    <%= f.text_field :player7_id %>
+  </div>
+  <div class="field">
+    <%= f.label :player8_id %><br />
+    <%= f.text_field :player8_id %>
+  </div>
+  <div class="field">
+    <%= f.label :player9_id %><br />
+    <%= f.text_field :player9_id %>
+  </div>
+  <div class="field">
+    <%= f.label :player10_id %><br />
+    <%= f.text_field :player10_id %>
+  </div>
+  <div class="field">
+    <%= f.label :player11_id %><br />
+    <%= f.text_field :player11_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

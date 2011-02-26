@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Which inning:</b>
+  <%= @inning.which_inning %>
+</p>
+
+<p>
+  <b>Overs:</b>
+  <%= @inning.overs %>
+</p>
+
+<p>
+  <b>Wides:</b>
+  <%= @inning.wides %>
+</p>
+
+<p>
+  <b>Noballs:</b>
+  <%= @inning.noballs %>
+</p>
+
+<p>
+  <b>Legbyes:</b>
+  <%= @inning.legbyes %>
+</p>
+
+<p>
+  <b>Byes:</b>
+  <%= @inning.byes %>
+</p>
+
+<p>
+  <b>Extras:</b>
+  <%= @inning.extras %>
+</p>
+
+<p>
+  <b>Score:</b>
+  <%= @inning.score %>
+</p>
+
+<p>
+  <b>Bowled out:</b>
+  <%= @inning.bowled_out %>
+</p>
+
+<p>
+  <b>Summary:</b>
+  <%= @inning.summary %>
+</p>
+
+
+<%= link_to 'Edit', edit_inning_path(@inning) %> |
+<%= link_to 'Back', innings_path %>

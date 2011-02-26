@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Userid:</b>
+  <%= @user.userid %>
+</p>
+
+<p>
+  <b>Hashed password:</b>
+  <%= @user.hashed_password %>
+</p>
+
+<p>
+  <b>Salt:</b>
+  <%= @user.salt %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @user.name %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @user.email %>
+</p>
+
+<p>
+  <b>Phone home:</b>
+  <%= @user.phone_home %>
+</p>
+
+<p>
+  <b>Phone cell:</b>
+  <%= @user.phone_cell %>
+</p>
+
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

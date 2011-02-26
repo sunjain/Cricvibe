@@ -1,0 +1,31 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  team_id: 1
+  match_id: 1
+  player1_id: 1
+  player2_id: 1
+  player3_id: 1
+  player4_id: 1
+  player5_id: 1
+  player6_id: 1
+  player7_id: 1
+  player8_id: 1
+  player9_id: 1
+  player10_id: 1
+  player11_id: 1
+
+two:
+  team_id: 1
+  match_id: 1
+  player1_id: 1
+  player2_id: 1
+  player3_id: 1
+  player4_id: 1
+  player5_id: 1
+  player6_id: 1
+  player7_id: 1
+  player8_id: 1
+  player9_id: 1
+  player10_id: 1
+  player11_id: 1

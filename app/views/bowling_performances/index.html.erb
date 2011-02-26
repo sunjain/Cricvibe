@@ -1,0 +1,37 @@
+<h1>Listing bowling_performances</h1>
+
+<table>
+  <tr>
+    <th>Overs</th>
+    <th>Wickets</th>
+    <th>Runs</th>
+    <th>Maidens</th>
+    <th>Wides</th>
+    <th>Noballs</th>
+    <th>Legbyes</th>
+    <th>Extras</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @bowling_performances.each do |bowling_performance| %>
+  <tr>
+    <td><%= bowling_performance.overs %></td>
+    <td><%= bowling_performance.wickets %></td>
+    <td><%= bowling_performance.runs %></td>
+    <td><%= bowling_performance.maidens %></td>
+    <td><%= bowling_performance.wides %></td>
+    <td><%= bowling_performance.noballs %></td>
+    <td><%= bowling_performance.legbyes %></td>
+    <td><%= bowling_performance.extras %></td>
+    <td><%= link_to 'Show', bowling_performance %></td>
+    <td><%= link_to 'Edit', edit_bowling_performance_path(bowling_performance) %></td>
+    <td><%= link_to 'Destroy', bowling_performance, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Bowling performance', new_bowling_performance_path %>

@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Type:</b>
+  <%= @dismissal.type %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @dismissal.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_dismissal_path(@dismissal) %> |
+<%= link_to 'Back', dismissals_path %>

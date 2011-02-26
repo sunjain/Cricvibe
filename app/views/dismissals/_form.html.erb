@@ -1,0 +1,25 @@
+<%= form_for(@dismissal) do |f| %>
+  <% if @dismissal.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@dismissal.errors.count, "error") %> prohibited this dismissal from being saved:</h2>
+
+      <ul>
+      <% @dismissal.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :type %><br />
+    <%= f.text_field :type %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

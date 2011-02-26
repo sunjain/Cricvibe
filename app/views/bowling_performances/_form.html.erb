@@ -1,0 +1,49 @@
+<%= form_for(@bowling_performance) do |f| %>
+  <% if @bowling_performance.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@bowling_performance.errors.count, "error") %> prohibited this bowling_performance from being saved:</h2>
+
+      <ul>
+      <% @bowling_performance.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :overs %><br />
+    <%= f.text_field :overs %>
+  </div>
+  <div class="field">
+    <%= f.label :wickets %><br />
+    <%= f.text_field :wickets %>
+  </div>
+  <div class="field">
+    <%= f.label :runs %><br />
+    <%= f.text_field :runs %>
+  </div>
+  <div class="field">
+    <%= f.label :maidens %><br />
+    <%= f.text_field :maidens %>
+  </div>
+  <div class="field">
+    <%= f.label :wides %><br />
+    <%= f.text_field :wides %>
+  </div>
+  <div class="field">
+    <%= f.label :noballs %><br />
+    <%= f.text_field :noballs %>
+  </div>
+  <div class="field">
+    <%= f.label :legbyes %><br />
+    <%= f.text_field :legbyes %>
+  </div>
+  <div class="field">
+    <%= f.label :extras %><br />
+    <%= f.text_field :extras %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

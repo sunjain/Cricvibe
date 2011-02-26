@@ -1,0 +1,39 @@
+<h1>Listing batting_performances</h1>
+
+<table>
+  <tr>
+    <th>Runs</th>
+    <th>Balls</th>
+    <th>Mins</th>
+    <th>Fours</th>
+    <th>Sixes</th>
+    <th>Singles</th>
+    <th>Doubles</th>
+    <th>Triples</th>
+    <th>Dot balls</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @batting_performances.each do |batting_performance| %>
+  <tr>
+    <td><%= batting_performance.runs %></td>
+    <td><%= batting_performance.balls %></td>
+    <td><%= batting_performance.mins %></td>
+    <td><%= batting_performance.fours %></td>
+    <td><%= batting_performance.sixes %></td>
+    <td><%= batting_performance.singles %></td>
+    <td><%= batting_performance.doubles %></td>
+    <td><%= batting_performance.triples %></td>
+    <td><%= batting_performance.dot_balls %></td>
+    <td><%= link_to 'Show', batting_performance %></td>
+    <td><%= link_to 'Edit', edit_batting_performance_path(batting_performance) %></td>
+    <td><%= link_to 'Destroy', batting_performance, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Batting performance', new_batting_performance_path %>

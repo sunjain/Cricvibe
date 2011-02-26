@@ -1,0 +1,47 @@
+<h1>Listing team_for_the_matches</h1>
+
+<table>
+  <tr>
+    <th>Team</th>
+    <th>Match</th>
+    <th>Player1</th>
+    <th>Player2</th>
+    <th>Player3</th>
+    <th>Player4</th>
+    <th>Player5</th>
+    <th>Player6</th>
+    <th>Player7</th>
+    <th>Player8</th>
+    <th>Player9</th>
+    <th>Player10</th>
+    <th>Player11</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @team_for_the_matches.each do |team_for_the_match| %>
+  <tr>
+    <td><%= team_for_the_match.team_id %></td>
+    <td><%= team_for_the_match.match_id %></td>
+    <td><%= team_for_the_match.player1_id %></td>
+    <td><%= team_for_the_match.player2_id %></td>
+    <td><%= team_for_the_match.player3_id %></td>
+    <td><%= team_for_the_match.player4_id %></td>
+    <td><%= team_for_the_match.player5_id %></td>
+    <td><%= team_for_the_match.player6_id %></td>
+    <td><%= team_for_the_match.player7_id %></td>
+    <td><%= team_for_the_match.player8_id %></td>
+    <td><%= team_for_the_match.player9_id %></td>
+    <td><%= team_for_the_match.player10_id %></td>
+    <td><%= team_for_the_match.player11_id %></td>
+    <td><%= link_to 'Show', team_for_the_match %></td>
+    <td><%= link_to 'Edit', edit_team_for_the_match_path(team_for_the_match) %></td>
+    <td><%= link_to 'Destroy', team_for_the_match, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Team for the match', new_team_for_the_match_path %>
