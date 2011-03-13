@@ -25,11 +25,13 @@ class BattingPerformancesController < ApplicationController
   # GET /batting_performances/new.xml
   def new
     @batting_performance = BattingPerformance.new
+		@team = Team.find(params[:team_id])
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @batting_performance }
-    end
+    #respond_to do |format|
+      #format.html # new.html.erb
+      #format.xml  { render :xml => @batting_performance }
+    #end
+		render :layout => false
   end
 
   # GET /batting_performances/1/edit

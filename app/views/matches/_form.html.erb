@@ -15,14 +15,47 @@
     <%= f.label :played_on %><br />
     <%= f.date_select :played_on %>
   </div>
-  <div class="field">
+	<div class="field">
     <%= f.label :venue %><br />
-    <%= f.text_field :venue %>
+		<%= select :match, :venue_id, Venue.find(:all).collect{|p| [p.name, p.id]} %>
   </div>
   <div class="field">
     <%= f.label :overs %><br />
     <%= f.text_field :overs %>
   </div>
+	<div class="field">
+    <%= f.label :team1 %><br />
+		<%= select :match, :team1_id, Team.find(:all).collect{|p| [p.name, p.id]} %>
+  </div>
+	<div class="field">
+    <%= f.label :team2 %><br />
+		<%= select :match, :team2_id, Team.find(:all).collect{|p| [p.name, p.id]} %>
+	</div>
+	<% if @match.team1 && @match.team2 then %>
+		<div class="field">
+    	<%= f.label :toss_winner %><br />
+			<%= select :match, :toss_winner_id, [[ @match.team1.name, @match.team1.id], [@match.team2.name, @match.team2.id]] %>
+		</div>
+	<% end %>
+	<% if @match.team1  && @match.team2 then%>
+		<div class="field">
+    	<%= f.label :team_batting_first %><br />
+			<%= select :match, :team_batting_first_id, [[ @match.team1.name, @match.team1.id], [@match.team2.name, @match.team2.id]] %>
+		</div>
+	<% end %>
+	<% if @match.team1  && @match.team2 then %>
+		<div class="field">
+    	<%= f.label :winner %><br />
+			<%= select :match, :winner_id, [[ @match.team1.name, @match.team1.id], [@match.team2.name, @match.team2.id]] %>
+		</div>
+	<% end %>
+
+
+
+
+
+
+
   <div class="actions">
     <%= f.submit %>
   </div>

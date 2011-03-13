@@ -4,7 +4,14 @@
   <tr>
     <th>Played on</th>
     <th>Venue</th>
-    <th>Overs</th>
+		<th>Overs</th>
+		<th>Team1</th>
+		<th>Team2</th>
+		<th>Toss Winner</th>
+		<th>Team Batting First</th>
+		<th>Winner</th>
+		<th>Inning1</th>
+		<th>Inning2</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,8 +20,15 @@
 <% @matches.each do |match| %>
   <tr>
     <td><%= match.played_on %></td>
-    <td><%= match.venue %></td>
+    <td><%= match.venue.name %></td>
     <td><%= match.overs %></td>
+		<td><%= if match.team1 then match.team1.name end %></td>
+		<td><%= if match.team2 then match.team2.name end %></td>
+		<td><%= if match.toss_winner then match.toss_winner.name end %></td>
+		<td><%= if match.team_batting_first then match.team_batting_first.name end %></td>
+		<td><%= if match.winner then match.winner.name end %></td>
+		<td><%= if !match.inning1 && match.team_batting_first then link_to 'Inning1', :controller => :innings , :action => :new, :match_id => match.id, :batting_team_id => match.team_batting_first.id end %> <td>
+		<td><%= if !match.inning2 && match.other_team(match.team_batting_first) then link_to 'Inning2', :controller => :innings, :action => :new, :match_id => match.id, :batting_team_id => match.other_team(match.team_batting_first).id end %> <td>
     <td><%= link_to 'Show', match %></td>
     <td><%= link_to 'Edit', edit_match_path(match) %></td>
     <td><%= link_to 'Destroy', match, :confirm => 'Are you sure?', :method => :delete %></td>

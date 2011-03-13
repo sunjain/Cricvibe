@@ -1,5 +1,5 @@
 class Dismissal < ActiveRecord::Base
 	belongs_to :batting_performance
-	has_one :fielder, :class => "Player", :foriegn_key => "fielder_id"
-	has_one :bowler, :class => "Player", :foriegn_key => "bowler_id"
+	belongs_to :fielder, :class_name => "Player", :foreign_key => "fielder_id"
+	belongs_to :bowler, :class_name => "Player", :foreign_key => "bowler_id"
 end

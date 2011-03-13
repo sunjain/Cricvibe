@@ -7,14 +7,44 @@
 
 <p>
   <b>Venue:</b>
-  <%= @match.venue %>
+  <%= @match.venue.name %>
 </p>
 
 <p>
   <b>Overs:</b>
   <%= @match.overs %>
 </p>
+<% if @match.team1 %>
+<p>
+  <b>Team1:</b>
+  <%= @match.team1.name %>
+</p>
+<% end %>
 
+<% if @match.team2 %>
+<p>
+  <b>Team2:</b>
+  <%= @match.team2.name %>
+</p>
+<% end %>
 
+<% if @match.toss_winner %>
+<p>
+  <b>Who won the toss:</b>
+  <%= @match.toss_winner.name %>
+</p>
+<% end %>
+<% if @match.team_batting_first %>
+<p>
+  <b>Team batting first:</b>
+  <%= @match.team_batting_first.name %>
+</p>
+<% end %>
+<% if @match.winner %>
+<p>
+  <b>Who won the match:</b>
+  <%= @match.winner.name %>
+</p>
+<% end %>
 <%= link_to 'Edit', edit_match_path(@match) %> |
 <%= link_to 'Back', matches_path %>

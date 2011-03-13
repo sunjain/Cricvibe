@@ -1,4 +1,6 @@
 Cricvibe::Application.routes.draw do
+  resources :venues
+
   resources :team_for_the_matches
 
   resources :bowling_performances
@@ -11,9 +13,9 @@ Cricvibe::Application.routes.draw do
 
   resources :batting_performances
 
-  resources :innings
+  resources :innings 
 
-  resources :teams
+  resources :teams 
 
   resources :matches
 
@@ -77,4 +79,10 @@ Cricvibe::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
+  
+	# Sample of regular route:
+  #   match 'products/:id' => 'catalog#view'
+  # Keep in mind you can assign values other than :controller and :action
+  match 'innings/:inning_id/new_batsman', :to  => 'innings#new_batsman', :as => :new_batsman
+  match 'innings/:batting_performance_id/new_dismissal', :to => 'innings#new_dismissal', :as => :new_dismissal
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110225235706) do
+ActiveRecord::Schema.define(:version => 20110310201559) do
 
   create_table "batting_performances", :force => true do |t|
     t.integer  "runs"
@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(:version => 20110225235706) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "player_id"
+    t.integer  "inning_id"
+    t.integer  "position"
   end
 
   create_table "bowling_performances", :force => true do |t|
@@ -39,6 +41,7 @@ ActiveRecord::Schema.define(:version => 20110225235706) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "player_id"
+    t.integer  "inning_id"
   end
 
   create_table "dismissals", :force => true do |t|
@@ -48,10 +51,10 @@ ActiveRecord::Schema.define(:version => 20110225235706) do
     t.datetime "updated_at"
     t.integer  "bowler_id"
     t.integer  "fielder_id"
+    t.integer  "batting_performance_id"
   end
 
   create_table "innings", :force => true do |t|
-    t.integer  "which_inning"
     t.float    "overs"
     t.integer  "wides"
     t.integer  "noballs"
@@ -63,54 +66,35 @@ ActiveRecord::Schema.define(:version => 20110225235706) do
     t.text     "summary"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "batting_performance1_id"
-    t.integer  "batting_performance2_id"
-    t.integer  "batting_performance3_id"
-    t.integer  "batting_performance4_id"
-    t.integer  "batting_performance5_id"
-    t.integer  "batting_performance6_id"
-    t.integer  "batting_performance7_id"
-    t.integer  "batting_performance8_id"
-    t.integer  "batting_performance9_id"
-    t.integer  "batting_performance10_id"
-    t.integer  "batting_performance11_id"
-    t.integer  "bowling_performance1_id"
-    t.integer  "bowling_performance2_id"
-    t.integer  "bowling_performance3_id"
-    t.integer  "bowling_performance4_id"
-    t.integer  "bowling_performance5_id"
-    t.integer  "bowling_performance6_id"
-    t.integer  "bowling_performance7_id"
-    t.integer  "bowling_performance8_id"
-    t.integer  "bowling_performance9_id"
-    t.integer  "bowling_performance10_id"
-    t.integer  "bowling_performance11_id"
+    t.integer  "match_id"
+    t.integer  "batting_team_id"
+    t.integer  "bowling_team_id"
+    t.integer  "team_id"
   end
 
   create_table "matches", :force => true do |t|
     t.date     "played_on"
-    t.string   "venue"
     t.integer  "overs"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "how_many_innings"
+    t.integer  "how_many_innings",      :default => 2
     t.integer  "toss_winner_id"
     t.integer  "team_batting_first_id"
     t.integer  "result_id"
     t.integer  "winner_id"
-    t.integer  "inning1_id"
-    t.integer  "inning2_id"
-    t.integer  "inning3_id"
-    t.integer  "inning4_id"
     t.integer  "tournament_id"
     t.integer  "team1_id"
     t.integer  "team2_id"
+    t.integer  "venue_id"
+    t.integer  "inning1_id"
+    t.integer  "inning2_id"
   end
 
   create_table "players", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "team_id"
   end
 
   create_table "results", :force => true do |t|
@@ -143,27 +127,6 @@ ActiveRecord::Schema.define(:version => 20110225235706) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "tournament_id"
-    t.string   "player1_id"
-    t.string   "player2_id"
-    t.string   "player3_id"
-    t.string   "player4_id"
-    t.string   "player5_id"
-    t.string   "player6_id"
-    t.string   "player7_id"
-    t.string   "player8_id"
-    t.string   "player9_id"
-    t.string   "player10_id"
-    t.string   "player11_id"
-    t.string   "player12_id"
-    t.string   "player13_id"
-    t.string   "player14_id"
-    t.string   "player15_id"
-    t.string   "player16_id"
-    t.string   "player17_id"
-    t.string   "player18_id"
-    t.string   "player19_id"
-    t.string   "player20_id"
   end
 
   create_table "tournaments", :force => true do |t|
@@ -180,6 +143,12 @@ ActiveRecord::Schema.define(:version => 20110225235706) do
     t.string   "email"
     t.string   "phone_home"
     t.string   "phone_cell"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "venues", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,4 +1,5 @@
 class Result < ActiveRecord::Base
-	has_one :match
-	belongs_to :winner , :class => "team", :foreign_key => "winner_id"
+	belongs_to :match
+	has_one :winner, :class_name => "Team"
+	accepts_nested_attributes_for :winner, :class_name => "Team"
 end

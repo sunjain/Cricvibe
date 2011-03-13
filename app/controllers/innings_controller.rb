@@ -25,6 +25,20 @@ class InningsController < ApplicationController
   # GET /innings/new.xml
   def new
     @inning = Inning.new
+		@inning.match_id = params[:match_id]
+		@inning.batting_team_id = params[:batting_team_id]
+		@inning.bowling_team_id = Match.find(params[:match_id]).other_team(Team.find(params[:batting_team_id])).id
+		@inning.save
+
+
+		##(1..11).each do | bf |
+			##@batting_performance = BattingPerformance.new
+			##@batting_performance.inning = @inning
+			##@batting_performance.save
+			##@bowling_performance = BowlingPerformance.new
+			##@bowling_performance.inning = @inning
+			##@bowling_performance.save
+		##end
 
     respond_to do |format|
       format.html # new.html.erb
@@ -80,4 +94,21 @@ class InningsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+	def new_batsman
+		@batting_performance = BattingPerformance.new
+		inning_id = params[:inning_id]
+		@batting_performance.inning_id = inning_id
+		@batting_performance.save
+		@team = Team.find(Inning.find(inning_id).batting_team_id)
+		@batting_performances = BattingPerformance.find_by_inning_id(inning_id)
+		render :layout=> false
+	end
+
+	def new_dismissal
+		@dismissal = Dismissal.new
+		@dismissal.batting_performance_id = params[:batting_performance_id]
+		render :layout=> false
+	end
+
 end

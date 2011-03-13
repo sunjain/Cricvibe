@@ -1,4 +1,4 @@
 class BowlingPerformance < ActiveRecord::Base
 	belongs_to :player
-	has_one :inning
+	belongs_to :inning
 end

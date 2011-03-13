@@ -26,6 +26,12 @@ class TeamsController < ApplicationController
   def new
     @team = Team.new
 
+		(1..20).each do | ctr |
+			@player = Player.new
+			@player.team = @team
+			@player.save
+		end
+
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @team }
