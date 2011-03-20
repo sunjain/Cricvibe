@@ -14,54 +14,39 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :overs %><br />
-    <%= f.text_field :overs %>
-  </div>
-  <div class="field">
-    <%= f.label :wides %><br />
-    <%= f.text_field :wides %>
-  </div>
-  <div class="field">
-    <%= f.label :noballs %><br />
-    <%= f.text_field :noballs %>
-  </div>
-  <div class="field">
-    <%= f.label :legbyes %><br />
-    <%= f.text_field :legbyes %>
-  </div>
-  <div class="field">
-    <%= f.label :byes %><br />
-    <%= f.text_field :byes %>
-  </div>
-  <div class="field">
-    <%= f.label :extras %><br />
-    <%= f.text_field :extras %>
-  </div>
-  <div class="field">
-    <%= f.label :score %><br />
-    <%= f.text_field :score %>
-  </div>
-  <div class="field">
-    <%= f.label :bowled_out %><br />
-    <%= f.check_box :bowled_out %>
-  </div>
-  <div class="field">
-    <%= f.label :summary %><br />
-    <%= f.text_area :summary %>
-	</div>
-
 	<p><%= link_to "New Batsman", {:action => "new_batsman", :inning_id => @inning.id}, :remote => true   %> </p>
 
 	<table style='margin-left:80px;'>  
-		<tr><th colspan="8">Inning1<th></tr>
-				<tr><th>Batsman</th><th id="out_how_header">Out?</th><th>Fielder</th><th>Bowler</th><th>Runs</th><th>Balls</th><th>4s</th><th>6s</th></tr>
-		<tr id="last_row"> </tr>
+		<tr><th bgcolor="yellow" colspan="8"><%= @inning.batting_team.name %> Inning<th></tr>
+				<tr><th>Batsman (<%= link_to "New", {:action => "new_batsman", :inning_id => @inning.id}, :remote => true %>)</th><th id="out_how_header">Out?</th><th>Fielder</th><th>Bowler</th><th>Runs</th><th>Balls</th><th>4s</th><th>6s</th></tr>
+				<% for @batting_performance in @inning.batting_performances %>
+					<% @dismissal = @batting_performance.dismissal %>
+					<tr>
+						<td><%= select 'batting_performance[]', :player_id, Player.find_all_by_team_id(@inning.batting_team.id).collect{ | p | [p.name, p.id ]}, :selected => @batting_performance.player_id  %></td>
+						<td><%= select 'dismissal[]', :dismissal_type, [["Not Out",0],["Caught",1],["Run Out",2],["Stump",3]], :selected => @batting_performance.dismissal.dismissal_type   %></td>
+						<td><%= select 'dismissal[]', :fielder_id, Player.find_all_by_team_id(@inning.bowling_team_id).collect{ | p | [p.name, p.id ] }, :selected => @batting_performance.dismissal.fielder_id %></td>
+						<td><%= select 'dismissal[]', :bowler_id, Player.find_all_by_team_id(@inning.bowling_team_id).collect{ | p | [p.name, p.id ] }, :selected => @batting_performance.dismissal.bowler_id %></td>
+						<td> <%= text_field 'batting_performance[]', :runs, :size => 1 %> </td>
+						<td> <%= text_field 'batting_performance[]', :balls , :size => 1 %> </td>
+						<td> <%= text_field 'batting_performance[]', :fours , :size => 1 %> </td>
+						<td> <%= text_field 'batting_performance[]', :sixes , :size => 1 %> </td>
+					</tr>
+				<% end %>
+				<tr id="last_row"> </tr>
+				<tr><td>&nbsp</td></tr>
+				<tr><td>&nbsp</td></tr>
+				<tr><th>Wides:</th><td><%= f.text_field :wides, :size => 1 %></td><th>NoBalls:</th><td><%= f.text_field :noballs , :size => 1%></td> <th>Byes:</th><td><%=  f.text_field :byes , :size => 1%> </td> <th>Leg Byes:</th><td><%= f.text_field :legbyes , :size => 1%></td><th> Total Extras:</th><td><%= f.text_field :extras , :size => 1 %></td></tr>
+				<tr><th>Wickets:</th><td><%= f.text_field :wickets, :size => 1 %> </td><th>Total:</th><td><%= f.text_field :score, :size => 1 %> </td></tr> 
+				<tr><th>All Out?</th><td><%= f.check_box :bowled_out %></td></tr>
 	</table>
+	
 	<table style='margin-left:80px;'>  
-		<% f.fields_for :bowling_performances do | p | %>
-			<tr><th>Bowlwer:</th><td><%= select :player, :id, Player.find_all_by_team_id(Match.find(@inning.match_id).other_team(Team.find(@inning.batting_team_id)).id).collect { | p | [p.name, p.id ] } %></td></tr>
-		<% end %>
+		<tr><th bgcolor="yellow" colspan="8">Bowling<th></tr>
+				<tr><th>Bowler (<%= link_to "New", {:action => "new_bowler", :inning_id => @inning.id}, :remote => true %>)</th></th><th>Overs</th><th>Maidens</th><th>Runs</th><th>Wickets</th><th>Wides</th><th>Noballs</th></tr>
+				<% for @bowling_performance in @inning.bowling_performances %>
+					<%= render 'bowler_form' %>	
+				<% end %>
+				<tr id="last_bowler_row"> </tr>
 	</table>
 
   <div class="actions">

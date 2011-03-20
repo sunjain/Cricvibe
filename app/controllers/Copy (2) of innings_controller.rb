@@ -25,23 +25,12 @@ class InningsController < ApplicationController
   # GET /innings/new.xml
   def new
     @inning = Inning.new
-		@match = Match.find(params[:match_id])
 		@inning.match_id = params[:match_id]
 		@inning.batting_team_id = params[:batting_team_id]
-		@inning.bowling_team_id = @match.other_team(Team.find(params[:batting_team_id])).id
-		
-		case params[:which_inning]
-		when "1"
-			@match.inning1 = @inning
-		when "2"
-			@match.inning2 = @inning
-		end
-		@match.save
-
+		@inning.bowling_team_id = Match.find(params[:match_id]).other_team(Team.find(params[:batting_team_id])).id
 		@inning.save
 
 		@batting_performances = BattingPerformance.find_by_inning_id(@inning.id)
-		@bowling_performances = BowlingPerformance.find_by_inning_id(@inning.id)
 
 
 		##(1..11).each do | bf |
@@ -62,12 +51,6 @@ class InningsController < ApplicationController
   # GET /innings/1/edit
   def edit
     @inning = Inning.find(params[:id])
-		#@batting_performance = BattingPerformance.new
-		##@batting_performance = []
-		##@inning.batting_performances.each { | bf | @batting_performance << bf }
-		#@batting_performance.save
-		#@dismissal = Dismissal.new
-		#@dismissal.save
   end
 
   # POST /innings
@@ -90,37 +73,6 @@ class InningsController < ApplicationController
   # PUT /innings/1.xml
   def update
     @inning = Inning.find(params[:id])
-
-		params[:batting_performance].each do | key, value |
-			@batting_performance = BattingPerformance.find(key )
-			@batting_performance.update_attributes(value)
-			@batting_performance.inning_id = params[:id]
-			unless @batting_performance.save then 
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @inning.errors, :status => :unprocessable_entity }
-			end
-
-		end
-
-		params[:dismissal].each do | key, value |
-			@dismissal = Dismissal.find(key)
-			@dismissal.update_attributes(value)
-			unless @dismissal.save then
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @inning.errors, :status => :unprocessable_entity }
-			end
-		end
-		
-		params[:bowling_performance].each do | key, value |
-			@bowlingbatting_performance = BowlingPerformance.find(key )
-			@bowlingbatting_performance.update_attributes(value)
-			@bowlingbatting_performance.inning_id = params[:id]
-			unless @bowlingbatting_performance.save then 
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @inning.errors, :status => :unprocessable_entity }
-			end
-
-		end
 
     respond_to do |format|
       if @inning.update_attributes(params[:inning])
@@ -160,17 +112,6 @@ class InningsController < ApplicationController
 		@dismissal.batting_performance_id = params[:batting_performance_id]
 		#@batting_performances = BattingPerformance.find_by_inning_id(inning_id)
 		@dismissal.save
-		render :layout=> false
-	end
-	
-	def new_bowler
-		@bowling_performance = BowlingPerformance.new
-		inning_id = params[:inning_id]
-		@inning = Inning.find(inning_id)
-		@bowling_performance.inning_id = inning_id
-		@bowling_performance.save
-		@team = Team.find(Inning.find(inning_id).bowling_team_id)
-		#@batting_performances = BattingPerformance.find_by_inning_id(inning_id)
 		render :layout=> false
 	end
 

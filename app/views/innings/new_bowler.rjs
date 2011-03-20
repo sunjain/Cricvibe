@@ -1,0 +1,1 @@
+page.insert_html :before, 'last_bowler_row', :partial => 'bowler_form'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110310201559) do
+ActiveRecord::Schema.define(:version => 20110318230955) do
 
   create_table "batting_performances", :force => true do |t|
     t.integer  "runs"
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(:version => 20110310201559) do
   end
 
   create_table "dismissals", :force => true do |t|
-    t.integer  "type"
+    t.integer  "dismissal_type"
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(:version => 20110310201559) do
     t.integer  "batting_team_id"
     t.integer  "bowling_team_id"
     t.integer  "team_id"
+    t.integer  "wickets"
   end
 
   create_table "matches", :force => true do |t|

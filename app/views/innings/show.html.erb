@@ -1,50 +1,44 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <b>Overs:</b>
-  <%= @inning.overs %>
-</p>
-
-<p>
-  <b>Wides:</b>
-  <%= @inning.wides %>
-</p>
-
-<p>
-  <b>Noballs:</b>
-  <%= @inning.noballs %>
-</p>
-
-<p>
-  <b>Legbyes:</b>
-  <%= @inning.legbyes %>
-</p>
-
-<p>
-  <b>Byes:</b>
-  <%= @inning.byes %>
-</p>
-
-<p>
-  <b>Extras:</b>
-  <%= @inning.extras %>
-</p>
-
-<p>
-  <b>Score:</b>
-  <%= @inning.score %>
-</p>
-
-<p>
-  <b>Bowled out:</b>
-  <%= @inning.bowled_out %>
-</p>
-
-<p>
-  <b>Summary:</b>
-  <%= @inning.summary %>
-</p>
-
-
-<%= link_to 'Edit', edit_inning_path(@inning) %> |
-<%= link_to 'Back', innings_path %>
+<table style='margin-left:80px;'>  
+		<tr><th bgcolor="yellow" colspan="8"><%= @inning.batting_team.name %> Inning<th></tr>
+				<tr><th>Batsman </th><th id="out_how_header">Out?</th><th>Fielder</th><th>Bowler</th><th>Runs</th><th>Balls</th><th>4s</th><th>6s</th></tr>
+				<% for @batting_performance in @inning.batting_performances %>
+					<% @dismissal = @batting_performance.dismissal %>
+						<% if @batting_performance.player %>
+							<tr>
+								<td><%= @batting_performance.player.name  %></td>
+								<% if @dimissal %>
+									<td><%= @dismissal.dismissal_type   %></td>
+									<td><% if @dismissal.fielder then  @dismissal.fielder.name end %> </td>
+									<td><% if @dismissal.bowler then 	@dismissal.bowler.name  end %> </td>
+								<% end %>
+								<td> <%= @batting_performance.runs %> </td>
+								<td> <%= @batting_performance.balls %> </td>
+								<td> <%= @batting_performance.fours %> </td>
+								<td> <%= @batting_performance.sixes %> </td>
+							</tr>
+						<% end %>
+				<% end %>
+				<tr id="last_row"> </tr>
+				<tr><td>&nbsp</td></tr>
+				<tr><td>&nbsp</td></tr>
+				<tr><th>Wides:</th><td><%= @inning.wides %></td><th>NoBalls:</th><td><%= @inning.noballs %></td> <th>Byes:</th><td><%=  @inning.byes%> </td> <th>Leg Byes:</th><td><%= @inning.legbyes %></td><th> Total Extras:</th><td><%= @inning.extras %></td></tr>
+				<tr><th>Wickets:</th><td><%= @inning.wickets %> </td><th>Total:</th><td><%= @inning.score %> </td></tr> 
+				<tr><th>All Out?</th><td><%= @inning.bowled_out? ? "All out":"not all out" %></td></tr>
+	</table>
+	<table style='margin-left:80px;'>  
+		<tr><th bgcolor="yellow" colspan="8">Bowling<th></tr>
+				<tr><th>Bowler </th></th><th>Overs</th><th>Maidens</th><th>Runs</th><th>Wickets</th><th>Wides</th><th>Noballs</th></tr>
+				<% for @bowling_performance in @inning.bowling_performances %>
+				<tr>
+						<td><%=  @bowling_performance.player.name  %></td>
+						<td> <%= @bowling_performance.overs %> </td>
+						<td> <%= @bowling_performance.maidens %> </td>
+						<td> <%= @bowling_performance.runs %> </td>
+						<td> <%= @bowling_performance.wickets %> </td>
+						<td> <%= @bowling_performance.wides %> </td>
+						<td> <%= @bowling_performance.noballs %> </td>
+				</tr>
+				<% end %>
+				<tr id="last_bowler_row"> </tr>
+	</table>
