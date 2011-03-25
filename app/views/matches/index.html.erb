@@ -18,7 +18,8 @@
   </tr>
 
 <% @matches.each do |match| %>
-  <tr>
+	<tr>
+		<td><%= link_to "#{match.team1.name} VS #{match.team2.name}", edit_match_path(match) %></td>
     <td><%= match.played_on %></td>
     <td><%= match.venue.name %></td>
     <td><%= match.overs %></td>

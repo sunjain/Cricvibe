@@ -10,11 +10,22 @@
       </ul>
     </div>
   <% end %>
+	
+	<div>
+		<%= link_to 'New Tournament', new_tournament_path %>
+	</div>
+	<div class="field">
+    <%= f.label :tournament %><br />
+		<%= select :match, :tournament_id, Tournament.find(:all).collect{|p| [p.name, p.id]} %>
+  </div>
 
   <div class="field">
     <%= f.label :played_on %><br />
     <%= f.date_select :played_on %>
   </div>
+	<div>
+		<%= link_to 'New Venue', new_venue_path %>
+	</div>
 	<div class="field">
     <%= f.label :venue %><br />
 		<%= select :match, :venue_id, Venue.find(:all).collect{|p| [p.name, p.id]} %>
@@ -25,12 +36,27 @@
   </div>
 	<div class="field">
     <%= f.label :team1 %><br />
-		<%= select :match, :team1_id, Team.find(:all).collect{|p| [p.name, p.id]} %>
+		<%= select :match, :team1_id, Team.find(:all).collect{|p| [p.name, p.id]}, :selected => Team.find(:first) %>
   </div>
 	<div class="field">
     <%= f.label :team2 %><br />
-		<%= select :match, :team2_id, Team.find(:all).collect{|p| [p.name, p.id]} %>
+		<%= select :match, :team2_id, Team.find(:all).collect{|p| [p.name, p.id]}, :select => Team.find(:first)  %>
 	</div>
+	<div>
+		<%= link_to 'New Team', new_team_path %>
+	</div>
+
+
+	<div class="field">
+    <%= f.label :toss_winner %><br />
+		<%= select :match, :toss_winner_id, Team.find(:all).collect{|p| [p.name, p.id]}, :select => Team.find(:first)  %>
+	</div>
+
+	<div class="field">
+    <%= f.label :team_batting_first %><br />
+		<%= select :match, :team_batting_first_id, Team.find(:all).collect{|p| [p.name, p.id]}, :select => Team.find(:first)  %>
+	</div>
+
 	<% if @match.team1 && @match.team2 then %>
 		<div class="field">
     	<%= f.label :toss_winner %><br />
@@ -50,13 +76,25 @@
 		</div>
 	<% end %>
 
+		<div class="field"><%= if !@match.inning1 && @match.team_batting_first  then
+							link_to 'Inning1', :controller => :innings , :action => :new, :match_id => @match.id, :batting_team_id => @match.team_batting_first.id, :which_inning => 1 
+						else if @match.inning1 && @match.team_batting_first then
+									link_to 'Inning1', edit_inning_path(@match.inning1)
+								 end 
+						end 
+				%> 
+				</div>
 
+		<div class="field"><%= if !@match.inning2 && @match.other_team(@match.team_batting_first) then 
+							link_to 'Inning2', :controller => :innings, :action => :new, :match_id => @match.id, :batting_team_id => @match.other_team(@match.team_batting_first).id, :which_inning => 2 
+						else if @match.inning2
+									link_to 'Inning2', edit_inning_path(@match.inning2)
+								 end
+						end 
+				%> 
+				</div>
 
-
-
-
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="actions">
+   			<%= f.submit %>
+		</div>
 <% end %>
