@@ -1,0 +1,22 @@
+
+  <div class="field">
+    <%= f.label :played_on %><br />
+    <%= f.date_select :played_on %>
+  </div>
+	<div>
+		<%= link_to 'New Venue', new_venue_path %>
+	</div>
+	<div class="field">
+    <%= f.label :venue %><br />
+		<%= select :match, :venue_id, Venue.find(:all).collect{|p| [p.name, p.id]} %>
+  </div>
+  <div class="field">
+    <%= f.label :overs %><br />
+    <%= f.text_field :overs %>
+  </div>
+	<% if @match.team1  && @match.team2 then %>
+		<div class="field">
+    	<%= f.label :winner %><br />
+			<%= select :match, :winner_id, [[ @match.team1.name, @match.team1.id], [@match.team2.name, @match.team2.id]] %>
+		</div>
+	<% end %>

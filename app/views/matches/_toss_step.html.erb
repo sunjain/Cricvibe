@@ -1,0 +1,10 @@
+	<div class="field">
+    <%= f.label :toss_winner %><br />
+		<%= select :match, :toss_winner_id, [[@match.team1.name, @match.team1.id],[@match.team2.name, @match.team2.id]], :select => @match.team1  %>
+	</div>
+
+	<div class="field">
+    <%= f.label :team_batting_first %><br />
+		<%= select :match, :team_batting_first_id,[[@match.team1.name, @match.team1.id],[@match.team2.name, @match.team2.id]], :select => @match.team1  %>
+	</div>
+

@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<html>
+<head>
+  <title>Cricvibe</title>
+  <%= stylesheet_link_tag :all %>
+  <%= javascript_include_tag :defaults %>
+	<%= csrf_meta_tag %>
+	<%= stylesheet_link_tag 'cricvibe.css', :media => 'all' %>
+	<%= stylesheet_link_tag 'compiled/screen.css', :media => 'screen, projection' %>
+	<%= stylesheet_link_tag 'compiled/print.css', :media => 'print' %>
+	<!-- [if lt IE 8]><%= stylesheet_link_tag 'compiled/ie.css', :media => 'screen, projection' %><![endid] -->
+</head>
+<body>
+
+</body>
+	<div class="all_content">
+		<div id="cricapp_banner">
+			<div id="logo_portion">
+				<div id="main_logo"> <%= link_to "Cricvibe", :controller => "matches" %> </div>
+				<div id="main_logo_subtext">Home of Local Cricket</div>
+			</div>
+			<div id="horzn_menu_portion">
+				<ul class="navigation">
+					<li><%= link_to "Home", '#' %></li>
+					<li><%= link_to "Help", '#' %></li>
+					<li><%= link_to "Sign In", '#' %></li>
+				</ul>
+			</div>
+		</div>
+		<div id="content">
+			<%= yield %>
+		</div>
+<div id='cricapp_footer'>
+				<ul class="footer_navigation">
+					<li> &copy; 2011 Cricvibe - Home of Local Cricket </li>
+					<li><a href="/privacy">Privacy Policy</a></li>
+					<li id="last_item"><a href="/terms">Terms of Service</a></li>
+				</ul>
+</div>
+</body>
+</html>

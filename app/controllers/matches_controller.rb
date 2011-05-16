@@ -3,6 +3,9 @@ class MatchesController < ApplicationController
   # GET /matches.xml
   def index
     @matches = Match.all
+    #@matches = Match.find(:all, 
+		#:condition => [tournament_id = ?", 
+		#current_tournament])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -24,12 +27,16 @@ class MatchesController < ApplicationController
   # GET /matches/new
   # GET /matches/new.xml
   def new
-    @match = Match.new
+		session[:match_params] ||= {}
+		@match = Match.new(session[:match_params])
+		@match.current_step = session[:match_step]
+											 
+    ##@match = Match.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @match }
-    end
+    ##respond_to do |format|
+      ##format.html # new.html.erb
+      ##format.xml  { render :xml => @match }
+    ##end
   end
 
   # GET /matches/1/edit
@@ -40,17 +47,43 @@ class MatchesController < ApplicationController
   # POST /matches
   # POST /matches.xml
   def create
-    @match = Match.new(params[:match])
 
-    respond_to do |format|
-      if @match.save
-        format.html { redirect_to(@match, :notice => 'Match was successfully created.') }
-        format.xml  { render :xml => @match, :status => :created, :location => @match }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @match.errors, :status => :unprocessable_entity }
-      end
-    end
+		session[:match_params].deep_merge!(params[:match])if params[:match]
+		@match = Match.new(session[:match_params])
+		@match.current_step = session[:match_step]
+
+		if @match.valid?
+			if params[:previous_button]
+				@match.previous_step
+			elsif @match.last_step?
+				@match.save if @match.all_valid?
+			else
+				@match.next_step
+			end
+			session[:match_step] = @match.current_step
+		end
+
+		if @match.new_record?
+			render 'new'
+		else
+			session[:match_step] = session[:match_params] = nil
+			flash[:notice] = "Match Saved"
+			redirect_to edit_match_path(@match)
+			#redirect_to @match
+		 	#redirect_to :controller => :innings , :action => :new, :match_id => @match.id, :batting_team_id => @match.team_batting_first.id, :which_inning => 1 
+		end
+
+
+    #@match = Match.new(params[:match])
+    #respond_to do |format|
+      #if @match.save
+        #format.html { redirect_to(@match, :notice => 'Match was successfully created.') }
+        #format.xml  { render :xml => @match, :status => :created, :location => @match }
+      #else
+        #format.html { render :action => "new" }
+        #format.xml  { render :xml => @match.errors, :status => :unprocessable_entity }
+      #end
+    #end
   end
 
   # PUT /matches/1

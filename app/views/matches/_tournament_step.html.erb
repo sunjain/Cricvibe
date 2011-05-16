@@ -1,0 +1,8 @@
+	<div>
+		<%= link_to 'New Tournament', new_tournament_path %>
+	</div>
+	<div class="field">
+    <%= f.label :tournament %><br />
+		<%= select :match, :tournament_id, Tournament.find(:all).collect{|p| [p.name, p.id]} %>
+  </div>
+

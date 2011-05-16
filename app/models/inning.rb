@@ -6,4 +6,5 @@ class Inning < ActiveRecord::Base
 	has_many :bowling_performances
 	accepts_nested_attributes_for :batting_performances
 	accepts_nested_attributes_for :bowling_performances
+	accepts_nested_attributes_for :match
 end

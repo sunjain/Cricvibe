@@ -43,6 +43,7 @@ class InningsController < ApplicationController
 		@batting_performances = BattingPerformance.find_by_inning_id(@inning.id)
 		@bowling_performances = BowlingPerformance.find_by_inning_id(@inning.id)
 
+		session[:previous_page] = request.env['HTTP_REFERER'] || innings_path
 
 		##(1..11).each do | bf |
 			##@batting_performance = BattingPerformance.new
@@ -75,6 +76,8 @@ class InningsController < ApplicationController
   def create
     @inning = Inning.new(params[:inning])
 
+		session[:previous_page] = request.env['HTTP_REFERER'] || innings_path
+
     respond_to do |format|
       if @inning.save
         format.html { redirect_to(@inning, :notice => 'Inning was successfully created.') }
@@ -90,6 +93,8 @@ class InningsController < ApplicationController
   # PUT /innings/1.xml
   def update
     @inning = Inning.find(params[:id])
+
+		session[:previous_page] = request.env['HTTP_REFERER'] || innings_path
 
 		if params[:batting_performance] then
 			params[:batting_performance].each do | key, value |

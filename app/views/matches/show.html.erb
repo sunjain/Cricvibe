@@ -7,7 +7,7 @@
 
 <p>
   <b>Venue:</b>
-  <%= @match.venue.name %>
+	<%= if @match.venue then @match.venue.name end %>
 </p>
 
 <p>
@@ -46,5 +46,16 @@
   <%= @match.winner.name %>
 </p>
 <% end %>
+<p>
+<% if @inning = @match.inning1 then %>
+	<%= render :partial => 'innings/show' %>
+<% end %>
+</p>
+<p>
+<% if @inning = @match.inning2 then %>
+	<%= render :partial => 'innings/show' %>
+<% end %>
+</p>
+
 <%= link_to 'Edit', edit_match_path(@match) %> |
 <%= link_to 'Back', matches_path %>

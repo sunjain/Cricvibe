@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110320233323) do
+ActiveRecord::Schema.define(:version => 20110515235453) do
 
   create_table "batting_performances", :force => true do |t|
     t.integer  "runs"
@@ -91,6 +91,13 @@ ActiveRecord::Schema.define(:version => 20110320233323) do
     t.integer  "inning2_id"
   end
 
+  create_table "organizations", :force => true do |t|
+    t.string   "name"
+    t.integer  "admin"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "players", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -104,6 +111,24 @@ ActiveRecord::Schema.define(:version => 20110320233323) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "winner_id"
+  end
+
+  create_table "team_compositions", :force => true do |t|
+    t.integer  "team_id"
+    t.integer  "match_id"
+    t.integer  "player1_id"
+    t.integer  "player2_id"
+    t.integer  "player3_id"
+    t.integer  "player4_id"
+    t.integer  "player5_id"
+    t.integer  "player6_id"
+    t.integer  "player7_id"
+    t.integer  "player8_id"
+    t.integer  "player9_id"
+    t.integer  "player10_id"
+    t.integer  "player11_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "team_for_the_matches", :force => true do |t|
@@ -124,8 +149,23 @@ ActiveRecord::Schema.define(:version => 20110320233323) do
     t.datetime "updated_at"
   end
 
+  create_table "team_roasters", :force => true do |t|
+    t.integer  "team_id"
+    t.integer  "player_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "tournament_id"
+  end
+
   create_table "teams", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tournament_compositions", :force => true do |t|
+    t.integer  "tournament_id"
+    t.integer  "team_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -134,6 +174,7 @@ ActiveRecord::Schema.define(:version => 20110320233323) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "organization_id"
   end
 
   create_table "users", :force => true do |t|

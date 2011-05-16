@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @organization.name %>
+</p>
+
+<p>
+  <b>Admin:</b>
+  <%= @organization.admin %>
+</p>
+
+
+<%= link_to 'Edit', edit_organization_path(@organization) %> |
+<%= link_to 'Back', organizations_path %>
+
+<% @matches = current_tournament.matches %>
+<div id="main_container">
+	<div id="top_matches">
+		<%= render 'matches/top_matches', :collection => @matches %> 
+	</div>
+	<div id="bottom_half">
+		<div id="top_batsmen">
+			<%= render 'matches/top_matches', :collection => @matches %> 
+		</div>
+		<div id="top_bowlers">
+			<%= render 'matches/top_matches', :collection => @matches %> 
+		</div>
+	</div>
+</div>

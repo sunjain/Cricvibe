@@ -1,4 +1,12 @@
 Cricvibe::Application.routes.draw do
+  resources :team_roasters
+
+  resources :team_compositions
+
+  resources :tournament_compositions
+
+  resources :organizations
+
   resources :venues
 
   resources :team_for_the_matches
@@ -22,6 +30,8 @@ Cricvibe::Application.routes.draw do
   resources :tournaments
 
   resources :users
+
+	resources :home
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -86,4 +96,7 @@ Cricvibe::Application.routes.draw do
   match 'innings/:inning_id/new_batsman', :to  => 'innings#new_batsman', :as => :new_batsman
   match 'innings/:inning_id/new_bowler', :to  => 'innings#new_bowler', :as => :new_bowler
   match 'innings/:batting_performance_id/new_dismissal', :to => 'innings#new_dismissal', :as => :new_dismissal
+	match '*path' => redirect('/')
+	root :to => "matches#index"
+	match  'home', :to => 'home#index'
 end

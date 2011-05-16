@@ -1,0 +1,2 @@
+module TournamentCompositionsHelper
+end

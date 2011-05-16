@@ -1,0 +1,25 @@
+<h1>Listing team_roasters</h1>
+
+<table>
+  <tr>
+    <th>Team</th>
+    <th>Player</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @team_roasters.each do |team_roaster| %>
+  <tr>
+    <td><%= team_roaster.team_id %></td>
+    <td><%= team_roaster.player_id %></td>
+    <td><%= link_to 'Show', team_roaster %></td>
+    <td><%= link_to 'Edit', edit_team_roaster_path(team_roaster) %></td>
+    <td><%= link_to 'Destroy', team_roaster, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Team roaster', new_team_roaster_path %>
