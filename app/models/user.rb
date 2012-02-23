@@ -3,10 +3,12 @@ require 'digest'
 class User < ActiveRecord::Base
 	attr_reader :password
 	attr_accessor :password_confirmation
+	belongs_to :organization
 	
 	validates :userid, :presence => true , :uniqueness => true, :length => {:maximum => 10 }
 	email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :name,  :presence => true, :length => {:maximum => 100 }
+  validates :organization,  :presence => true
   validates :email, :presence => true, :format   => { :with => email_regex }
 	validates :password, :presence, :confirmation => true
 

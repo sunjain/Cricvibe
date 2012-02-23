@@ -10,6 +10,11 @@
       </ul>
     </div>
   <% end %>
+	
+	<div class="field">
+		<% session[:current_team_id] = @team_composition.team.id %>
+		<%= link_to 'Define a new Player', new_player_path %>
+	</div>
 
   <div class="field">
     <%= f.label :match_id %><br />

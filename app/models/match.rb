@@ -13,6 +13,8 @@ class Match < ActiveRecord::Base
 	belongs_to :inning1, :class_name => "Inning"
 	belongs_to :inning2, :class_name => "Inning"
 	accepts_nested_attributes_for :result
+	accepts_nested_attributes_for :team1_composition, :allow_destroy => true
+	accepts_nested_attributes_for :team2_composition, :allow_destroy => true
 
 	#accepts_nested_attributes_for :team1_composition, :class_name => "TeamComposition", :allow_destroy => true
 	#accepts_nested_attributes_for :team2_composition, :class_name => "TeamComposition", :allow_destroy => true
@@ -23,11 +25,13 @@ class Match < ActiveRecord::Base
 	validate :teams_not_same, :if => :teams?
 
 	def teams_not_same
+		if team1.nil? or team2.nil? then return false end
 		errors.add("Can not have same two teams:", team1.name) if
 			team1 == team2
 	end
 	
 	attr_writer :current_step
+
 
 	def teams?
 		current_step == "teams"
@@ -50,7 +54,6 @@ class Match < ActiveRecord::Base
 
 
 	def other_inning(this_inning)
-		debugger
 		if this_inning == self.inning1 then 
 			self.inning2 
 		else 
@@ -69,8 +72,8 @@ class Match < ActiveRecord::Base
 	end
 
 	def steps
-		#%w[tournament teams team_composition toss rest]
-		%w[tournament teams toss rest]
+		%w[tournament teams team1_composition team2_composition toss rest]
+		#%w[tournament teams toss rest]
 	end
 
 	def all_valid?

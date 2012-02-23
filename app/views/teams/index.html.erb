@@ -14,6 +14,7 @@
     <td><%= link_to 'Show', team %></td>
     <td><%= link_to 'Edit', edit_team_path(team) %></td>
     <td><%= link_to 'Destroy', team, :confirm => 'Are you sure?', :method => :delete %></td>
+		<td><%= if (roaster = Roaster.find_by_team_id(team.id)).nil?  then link_to 'Create Team Roaster',  new_roaster_path(:team_id => team) else link_to 'Edit Team Roaster', edit_roaster_path(roaster) end %></td>
   </tr>
 <% end %>
 </table>

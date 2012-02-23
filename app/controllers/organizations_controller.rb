@@ -14,7 +14,12 @@ class OrganizationsController < ApplicationController
   # GET /organizations/1.xml
   def show
     @organization = Organization.find(params[:id])
-		session[:organization] = @organization
+	
+		if @organization then
+			session[:organization] = @organization
+		else
+			@organization = 1
+		end
 
     respond_to do |format|
       format.html # show.html.erb
@@ -45,7 +50,14 @@ class OrganizationsController < ApplicationController
 
     respond_to do |format|
       if @organization.save
-        format.html { redirect_to(@organization, :notice => 'Organization was successfully created.') }
+        format.html { 
+					if session[:user].nil? then
+						redirect_to(:signup, :notice => 'Organization was successfully created.') 
+					else 
+						redirect_to(:back, :notice => 'Organization was successfully created.') 
+					end
+				}
+        #format.html { redirect_to(@organization, :notice => 'Organization was successfully created.') }
         format.xml  { render :xml => @organization, :status => :created, :location => @organization }
       else
         format.html { render :action => "new" }

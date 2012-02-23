@@ -23,10 +23,10 @@
 					<% @dismissal = @batting_performance.dismissal %>
 					<tr>
 						<% if @dismissal then %>
-						<td><%= select 'batting_performance[]', :player_id, Player.find_all_by_team_id(@inning.batting_team.id).collect{ | p | [p.name, p.id ]}, :selected => @batting_performance.player_id  %></td>
+						<td><%= select 'batting_performance[]', :player_id, @inning.batting_team.match_players(@inning.match_id).collect{ | p | [p.name, p.id ]}, :selected => @batting_performance.player_id  %></td>
 						<td><%= select 'dismissal[]', :dismissal_type, [["Not Out",0],["Caught",1],["Run Out",2],["Stump",3]], :selected => @batting_performance.dismissal.dismissal_type   %></td>
-						<td><%= select 'dismissal[]', :fielder_id, Player.find_all_by_team_id(@inning.bowling_team_id).collect{ | p | [p.name, p.id ] }, :selected => @batting_performance.dismissal.fielder_id %></td>
-						<td><%= select 'dismissal[]', :bowler_id, Player.find_all_by_team_id(@inning.bowling_team_id).collect{ | p | [p.name, p.id ] }, :selected => @batting_performance.dismissal.bowler_id %></td>
+						<td><%= select 'dismissal[]', :fielder_id, @inning.bowling_team.match_players(@inning.match_id).collect{ | p | [p.name, p.id ] }, :selected => @batting_performance.dismissal.fielder_id %></td>
+						<td><%= select 'dismissal[]', :bowler_id, @inning.bowling_team.match_players(@inning.match_id).collect{ | p | [p.name, p.id ] }, :selected => @batting_performance.dismissal.bowler_id %></td>
 						<% end %>
 						<td> <%= text_field 'batting_performance[]', :runs, :size => 1 %> </td>
 						<td> <%= text_field 'batting_performance[]', :balls , :size => 1 %> </td>

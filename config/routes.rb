@@ -1,4 +1,6 @@
 Cricvibe::Application.routes.draw do
+  resources :roasters
+
   resources :team_roasters
 
   resources :team_compositions
@@ -96,7 +98,10 @@ Cricvibe::Application.routes.draw do
   match 'innings/:inning_id/new_batsman', :to  => 'innings#new_batsman', :as => :new_batsman
   match 'innings/:inning_id/new_bowler', :to  => 'innings#new_bowler', :as => :new_bowler
   match 'innings/:batting_performance_id/new_dismissal', :to => 'innings#new_dismissal', :as => :new_dismissal
-	match '*path' => redirect('/')
+	#match '*path' => redirect('/')
 	root :to => "matches#index"
 	match  'home', :to => 'home#index'
+	match 'login/signin', :to => 'login#signin' , :as => :signin
+	match 'login/signup', :to => 'login#signup', :as => :signup
+
 end

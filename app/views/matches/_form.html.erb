@@ -36,26 +36,16 @@
   </div>
 	<div class="field">
     <%= f.label :team1 %><br />
-		<%= select :match, :team1_id, Team.find(:all).collect{|p| [p.name, p.id]}, :selected => Team.find(:first) %>
+		<%= select :match, :team1_id, Team.find(:all).collect{|p| [p.name, p.id]}, :prompt => "Please select"  %>
   </div>
 	<div class="field">
     <%= f.label :team2 %><br />
-		<%= select :match, :team2_id, Team.find(:all).collect{|p| [p.name, p.id]}, :select => Team.find(:first)  %>
+		<%= select :match, :team2_id, Team.find(:all).collect{|p| [p.name, p.id]}, :prompt => "Please select"  %>
 	</div>
 	<div>
 		<%= link_to 'New Team', new_team_path %>
 	</div>
 
-
-	<div class="field">
-    <%= f.label :toss_winner %><br />
-		<%= select :match, :toss_winner_id, Team.find(:all).collect{|p| [p.name, p.id]}, :select => Team.find(:first)  %>
-	</div>
-
-	<div class="field">
-    <%= f.label :team_batting_first %><br />
-		<%= select :match, :team_batting_first_id, Team.find(:all).collect{|p| [p.name, p.id]}, :select => Team.find(:first)  %>
-	</div>
 
 	<% if @match.team1 && @match.team2 then %>
 		<div class="field">

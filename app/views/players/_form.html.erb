@@ -15,7 +15,16 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
+	<%= hidden_field(:team, :id) %>
   <div class="actions">
-    <%= f.submit %>
-  </div>
+		<%= f.submit "Add player to #{@team.name}'s team roaster" %>
+	</div>
 <% end %>
+	<h3>List of players currently playing for <%= current_organization.name %> : </h3>
+	<p>	
+	<% i = 0 %>	
+	<% current_organization.players.each do | player | %>
+		<%= if i == 0 then player.name if player    else ", #{player.name}" if player  end  -%> 
+		<% i = i +1 %>
+	<% end %>
+	</p>

@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 	end
 
 	def current_tournament
-		session[:current_tournament] || Tournament.find_by_organization(current_orgranization)
+		session[:current_tournament] || Tournament.find_by_organization_id(current_organization)
 	end
 
 end

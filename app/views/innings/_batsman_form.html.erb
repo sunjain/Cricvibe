@@ -1,5 +1,5 @@
 <tr>
-	<td><%= select 'batting_performance[]', :player_id, Player.find_all_by_team_id(@team.id).collect{ | p | [p.name, p.id ] } %></td>
+	<td><%= select 'batting_performance[]', :player_id, @team.match_players(@batting_performance.inning.match_id).collect{ | p | [p.name, p.id ] } %></td>
 	<td id="out_how" colspan="3"> <%= link_to "Out?", {:action => "new_dismissal", :batting_performance_id => @batting_performance.id}, :remote => true %> </td>
 	<td> <%= text_field 'batting_performance[]', :runs, :size => 1 %> </td>
 	<td> <%= text_field 'batting_performance[]', :balls , :size => 1 %> </td>

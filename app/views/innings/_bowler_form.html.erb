@@ -1,5 +1,5 @@
 <tr>
-		<td><%= select 'bowling_performance[]', :player_id, Player.find_all_by_team_id(@inning.bowling_team.id).collect{ | p | [p.name, p.id ]}, :selected => @bowling_performance.player_id  %></td>
+		<td><%= select 'bowling_performance[]', :player_id,@team.match_players(@bowling_performance.inning.match_id).collect{ | p | [p.name, p.id ]}, :selected => @bowling_performance.player_id  %></td>
 		<td> <%= text_field 'bowling_performance[]', :overs, :size => 1 %> </td>
 		<td> <%= text_field 'bowling_performance[]', :maidens , :size => 1 %> </td>
 		<td> <%= text_field 'bowling_performance[]', :runs , :size => 1 %> </td>

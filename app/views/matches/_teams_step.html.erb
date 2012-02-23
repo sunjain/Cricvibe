@@ -1,10 +1,10 @@
 	<div class="field">
     <%= f.label :team1 %><br />
-		<%= select :match, :team1_id, Team.find(:all).collect{|p| [p.name, p.id]}, :selected => Team.find(:first) %>
+		<%= select :match, :team1_id, Team.find(:all).collect{|p| [p.name, p.id]}, {:prompt => "Please select"} %>
   </div>
 	<div class="field">
     <%= f.label :team2 %><br />
-		<%= select :match, :team2_id, Team.find(:all).collect{|p| [p.name, p.id]}, :select => Team.find(:first)  %>
+		<%= select :match, :team2_id, Team.find(:all).collect{|p| [p.name, p.id]}, {:prompt => "Please select"}  %>
 	</div>
 	<div>
 		<%= link_to 'New Team', new_team_path %>

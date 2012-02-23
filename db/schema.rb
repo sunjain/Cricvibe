@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110515235453) do
+ActiveRecord::Schema.define(:version => 20110815050319) do
 
   create_table "batting_performances", :force => true do |t|
     t.integer  "runs"
@@ -103,6 +103,7 @@ ActiveRecord::Schema.define(:version => 20110515235453) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "team_id"
+    t.integer  "organization_id"
   end
 
   create_table "results", :force => true do |t|
@@ -111,6 +112,33 @@ ActiveRecord::Schema.define(:version => 20110515235453) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "winner_id"
+  end
+
+  create_table "roasters", :force => true do |t|
+    t.integer  "team_id"
+    t.integer  "tournament_id"
+    t.integer  "player1_id"
+    t.integer  "player2_id"
+    t.integer  "player3_id"
+    t.integer  "player4_id"
+    t.integer  "player5_id"
+    t.integer  "player6_id"
+    t.integer  "player7_id"
+    t.integer  "player8_id"
+    t.integer  "player9_id"
+    t.integer  "player10_id"
+    t.integer  "player11_id"
+    t.integer  "player12_id"
+    t.integer  "player13_id"
+    t.integer  "player14_id"
+    t.integer  "player15_id"
+    t.integer  "player16_id"
+    t.integer  "player17_id"
+    t.integer  "player18_id"
+    t.integer  "player19_id"
+    t.integer  "player20_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "team_compositions", :force => true do |t|
@@ -161,6 +189,7 @@ ActiveRecord::Schema.define(:version => 20110515235453) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "organization_id"
   end
 
   create_table "tournament_compositions", :force => true do |t|
@@ -187,6 +216,7 @@ ActiveRecord::Schema.define(:version => 20110515235453) do
     t.string   "phone_cell"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "organization_id"
   end
 
   create_table "venues", :force => true do |t|

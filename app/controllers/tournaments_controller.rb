@@ -13,7 +13,8 @@ class TournamentsController < ApplicationController
   # GET /tournaments/1
   # GET /tournaments/1.xml
   def show
-    @tournament = Tournament.find(params[:id])
+    ##@tournament = Tournament.find(params[:id])
+    @tournament = Tournament.where(:id => params[:id] , :organization_id => current_organization )
 
     respond_to do |format|
       format.html # show.html.erb
@@ -34,13 +35,17 @@ class TournamentsController < ApplicationController
 
   # GET /tournaments/1/edit
   def edit
-    @tournament = Tournament.find(params[:id])
+    ##@tournament = Tournament.find(params[:id])
+    ##@tournament = Tournament.where(:id => params[:id] , :organization_id => current_organization.id )
+		@tournament = current_organization.tournaments.find(params[:id])
+
   end
 
   # POST /tournaments
   # POST /tournaments.xml
   def create
     @tournament = Tournament.new(params[:tournament])
+    @tournament.organization_id = current_organization
 
     respond_to do |format|
       if @tournament.save
@@ -56,7 +61,8 @@ class TournamentsController < ApplicationController
   # PUT /tournaments/1
   # PUT /tournaments/1.xml
   def update
-    @tournament = Tournament.find(params[:id])
+    ##@tournament = Tournament.find(params[:id])
+    @tournament = Tournament.where(:id => params[:id] , :organization_id => current_organization )
 
     respond_to do |format|
       if @tournament.update_attributes(params[:tournament])
@@ -72,7 +78,8 @@ class TournamentsController < ApplicationController
   # DELETE /tournaments/1
   # DELETE /tournaments/1.xml
   def destroy
-    @tournament = Tournament.find(params[:id])
+    ##@tournament = Tournament.find(params[:id])
+    @tournament = Tournament.where(:id => params[:id] , :organization_id => current_organization )
     @tournament.destroy
 
     respond_to do |format|
