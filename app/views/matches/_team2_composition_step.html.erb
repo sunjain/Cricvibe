@@ -1,0 +1,19 @@
+<p>Team2 Name: <%= @match.team2.name %> 
+<% @team2_composition = TeamComposition.new %>
+<% @team2_players = @match.team2.tournament_players(current_tournament.id).map { |p| [p.name,p.id] } %>
+<table>  
+    <th>Team2 Player1:</th><td><%= select 'team2_composition', 'player1_id', @team2_players%></td></tr>
+    <th>Team2 Player2:</th><td><%= select 'team2_composition', 'player2_id', @team2_players%></td></tr>
+    <th>Team2 Player3:</th><td><%= select 'team2_composition', 'player3_id', @team2_players%></td></tr>
+    <th>Team2 Player4:</th><td><%= select 'team2_composition', 'player4_id', @team2_players%></td></tr>
+    <th>Team2 Player5:</th><td><%= select 'team2_composition', 'player5_id', @team2_players%></td></tr>
+    <th>Team2 Player6:</th><td><%= select 'team2_composition', 'player6_id', @team2_players%></td></tr>
+    <th>Team2 Player7:</th><td><%= select 'team2_composition', 'player7_id', @team2_players%></td></tr>
+    <th>Team2 Player8:</th><td><%= select 'team2_composition', 'player8_id', @team2_players%></td></tr>
+    <th>Team2 Player9:</th><td><%= select 'team2_composition', 'player9_id', @team2_players%></td></tr>
+    <th>Team2 Player10:</th><td><%= select 'team2_composition', 'player10_id', @team2_players%></td></tr>
+    <th>Team2 Player11:</th><td><%= select 'team2_composition', 'player11_id', @team2_players%></td></tr>    
+    </tr>
+</table>
+<% session[:current_team_id] = @match.team2.id %>
+<%= link_to 'New Player',  new_player_path  %> 

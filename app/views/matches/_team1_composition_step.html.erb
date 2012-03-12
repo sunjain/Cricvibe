@@ -1,0 +1,19 @@
+<p>Team1 Name: <%= @match.team1.name %> 
+<% @team1_composition = TeamComposition.new %>
+<% @team1_players = @match.team1.tournament_players(current_tournament.id).map { |p| [p.name,p.id] } %>
+<table>  
+    <tr><th>Player1:</th><td><%= select 'team1_composition', 'player1_id', @team1_players, {:include_blank => 'Select '} %></td> <td><%= link_to 'New Player ', new_player_path %> </td>
+	<tr><th>Player2:</th><td><%= select 'team1_composition', 'player2_id', @team1_players, {:include_blank => 'Select '}%></td ><td><%= link_to 'New Player ', new_player_path %> </td>
+    <tr><th>Player3:</th><td><%= select 'team1_composition', 'player3_id', @team1_players, {:include_blank => 'Select '}%></td><td><%= link_to 'New Player ', new_player_path %> </td>
+    <tr><th>Player4:</th><td><%= select 'team1_composition', 'player4_id', @team1_players, {:include_blank => 'Select '}%></td></td><td><%= link_to 'New Player ', new_player_path %> </td>
+    <tr><th>Player5:</th><td><%= select 'team1_composition', 'player5_id', @team1_players, {:include_blank => 'Select '}%></td><td><%= link_to 'New Player ', new_player_path %> </td>
+    <tr><th>Player6:</th><td><%= select 'team1_composition', 'player6_id', @team1_players, {:include_blank => 'Select '}%></td><td><%= link_to 'New Player ', new_player_path %> </td>
+    <tr><th>Player7:</th><td><%= select 'team1_composition', 'player7_id', @team1_players, {:include_blank => 'Select '}%></td><td><%= link_to 'New Player ', new_player_path %> </td>
+    <tr><th>Player8:</th><td><%= select 'team1_composition', 'player8_id', @team1_players, {:include_blank => 'Select '}%></td></td><td><%= link_to 'New Player ', new_player_path %> </td>
+    <tr><th>Player9:</th><td><%= select 'team1_composition', 'player9_id', @team1_players, {:include_blank => 'Select '}%></td><td><%= link_to 'New Player ', new_player_path %> </td>
+    <tr><th>Player10:</th><td><%= select 'team1_composition', 'player10_id', @team1_players, {:include_blank => 'Select '}%></td></td><td><%= link_to 'New Player ', new_player_path %> </td>
+    <tr><th>Player11:</th><td><%= select 'team1_composition', 'player11_id', @team1_players, {:include_blank => 'Select '}%></td>   <td><%= link_to 'New Player ', new_player_path %> </td>
+    </tr>
+</table>
+<% session[:current_team_id] = @match.team1.id %>
+<%= link_to 'New Player',  new_player_path  %> 

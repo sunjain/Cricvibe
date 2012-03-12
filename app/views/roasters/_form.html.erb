@@ -1,0 +1,112 @@
+<%= form_for(@roaster) do |f| %>
+  <% if @roaster.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@roaster.errors.count, "error") %> prohibited this roaster from being saved:</h2>
+
+      <ul>
+      <% @roaster.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+	<div class="field">
+		<p> Team </p>
+		<%= @team.name if @team %>
+  </div>
+	<div class="field">
+		<p> Tournament </p>
+		<%= @tournament.name if @tournament %>
+	</div>
+	<div class="field">
+		<% session[:current_team_id] = @team.id if @team %>
+		<%= link_to 'Define a new Player', new_player_path %>
+	</div>
+	<%= hidden_field(:team, :id) %>
+	<%= hidden_field(:tournament, :id) %>
+	
+	<div class="field">
+		<%= f.label :player1_id %><br />
+		<%= f.collection_select :player1_id, Player.where("organization_id = ?", current_organization), :id, :name, {:prompt => 'Select Player'} %>
+	</div>
+	<div class="field">
+		<%= f.label :player2_id %><br />
+		<%= f.collection_select :player2_id, Player.where("organization_id = ?", current_organization), :id, :name, {:prompt => 'Select Player'} %>
+	</div>
+	<div class="field">
+		<%= f.label :player3_id %><br />
+		<%= f.collection_select :player3_id, Player.where("organization_id = ?", current_organization), :id, :name, {:prompt => 'Select Player'} %>
+	</div>
+	<div class="field">
+		<%= f.label :player4_id %><br />
+		<%= f.collection_select :player4_id, Player.where("organization_id = ?", current_organization), :id, :name, {:prompt => 'Select Player'} %>
+	</div>
+	<div class="field">
+		<%= f.label :player5_id %><br />
+		<%= f.collection_select :player5_id, Player.where("organization_id = ?", current_organization), :id, :name, {:prompt => 'Select Player'} %>
+	</div>
+	<div class="field">
+		<%= f.label :player6_id %><br />
+		<%= f.collection_select :player6_id, Player.where("organization_id = ?", current_organization), :id, :name, {:prompt => 'Select Player'} %>
+	</div>
+	<div class="field">
+		<%= f.label :player7_id %><br />
+		<%= f.collection_select :player7_id, Player.where("organization_id = ?", current_organization), :id, :name, {:prompt => 'Select Player'} %>
+	</div>
+	<div class="field">
+		<%= f.label :player8_id %><br />
+		<%= f.collection_select :player8_id, Player.where("organization_id = ?", current_organization), :id, :name, {:prompt => 'Select Player'} %>
+	</div>
+	<div class="field">
+		<%= f.label :player9_id %><br />
+		<%= f.collection_select :player9_id, Player.where("organization_id = ?", current_organization), :id, :name, {:prompt => 'Select Player'} %>
+	</div>
+	<div class="field">
+		<%= f.label :player10_id %><br />
+		<%= f.collection_select :player10_id, Player.where("organization_id = ?", current_organization), :id, :name, {:prompt => 'Select Player'} %>
+	</div>
+	<div class="field">
+		<%= f.label :player11_id %><br />
+		<%= f.collection_select :player11_id, Player.where("organization_id = ?", current_organization), :id, :name, {:prompt => 'Select Player'} %>
+	</div>
+	<div class="field">
+		<%= f.label :player12_id %><br />
+		<%= f.collection_select :player12_id, Player.where("organization_id = ?", current_organization), :id, :name, {:prompt => 'Select Player'} %>
+	</div>
+	<div class="field">
+		<%= f.label :player13_id %><br />
+		<%= f.collection_select :player13_id, Player.where("organization_id = ?", current_organization), :id, :name, {:prompt => 'Select Player'} %>
+	</div>
+	<div class="field">
+		<%= f.label :player14_id %><br />
+		<%= f.collection_select :player14_id, Player.where("organization_id = ?", current_organization), :id, :name, {:prompt => 'Select Player'} %>
+	</div>
+	<div class="field">
+		<%= f.label :player15_id %><br />
+		<%= f.collection_select :player15_id, Player.where("organization_id = ?", current_organization), :id, :name, {:prompt => 'Select Player'} %>
+	</div>
+	<div class="field">
+		<%= f.label :player16_id %><br />
+		<%= f.collection_select :player16_id, Player.where("organization_id = ?", current_organization), :id, :name, {:prompt => 'Select Player'} %>
+	</div>
+	<div class="field">
+		<%= f.label :player17_id %><br />
+		<%= f.collection_select :player17_id, Player.where("organization_id = ?", current_organization), :id, :name, {:prompt => 'Select Player'} %>
+	</div>
+	<div class="field">
+		<%= f.label :player18_id %><br />
+		<%= f.collection_select :player18_id, Player.where("organization_id = ?", current_organization), :id, :name, {:prompt => 'Select Player'} %>
+	</div>
+	<div class="field">
+		<%= f.label :player19_id %><br />
+		<%= f.collection_select :player19_id, Player.where("organization_id = ?", current_organization), :id, :name, {:prompt => 'Select Player'} %>
+	</div>
+	<div class="field">
+		<%= f.label :player20_id %><br />
+		<%= f.collection_select :player20_id, Player.where("organization_id = ?", current_organization), :id, :name, {:prompt => 'Select Player'} %>
+	</div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

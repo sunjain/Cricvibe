@@ -1,0 +1,37 @@
+<% form_tag(:action => "signup") do %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<label for="user_login">UserId</label><br/>
+<%= text_field "user", "userid", :size => 20 %><br/>
+
+<label for="user_password">Password</label><br/>
+<%= password_field "user", "password", :size => 20 %><br/>
+
+<label for="user_login">Name</label><br/>
+<%= text_field "user", "name", :size => 20 %><br/>
+
+
+<label for="user_password_confirmation">Password Confirmation</label><br/>
+<%= password_field "user", "password_confirmation", :size => 20 %><br/>
+
+<label for="user_email">Email</label><br/>
+<%= text_field "user", "email",:size => 20 %><br/>
+
+<label for="ogranization">Club/Organization</label><br/>
+<%= select "user", "organization_id", Organization.find(:all).map {|o| [o.name,o.id]}  %>
+<%= link_to "New Club/Organization", :new_organization %> 
+<br/>
+
+<%= submit_tag "Signup" %>
+
+<% end %>

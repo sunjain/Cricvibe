@@ -1,0 +1,46 @@
+<table id="signin_table">
+	<% form_tag(:action => "signin") do %>
+	<tr>
+		<tr>
+			<td>&nbsp</td>
+		</tr>
+		<tr>
+			<td>&nbsp</td>
+		</tr>
+		<th>
+			Username:
+		</th>
+		<td>
+			<%= text_field_tag "username" %>
+		</td>
+	</tr>
+	<tr>
+			<th>
+      	Password:
+			</th>
+			<td>
+				<%= password_field_tag "password" %>
+			</td>
+	</tr>
+	<tr>
+		<td>
+		</td>
+		<td>
+				<%= submit_tag "Sign In" %>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		</td>
+		<td>
+				Don't have a Cricvibe account? <%= link_to 'Create an account now', :action => 'signup',:controller => 'login' %>
+		</td>
+	</tr>
+		<tr>
+			<td>&nbsp</td>
+		</tr>
+		<tr>
+			<td>&nbsp</td>
+		</tr>
+    <% end %> 
+</table>

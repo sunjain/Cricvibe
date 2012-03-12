@@ -1,0 +1,65 @@
+<h1>Listing roasters</h1>
+
+<table>
+  <tr>
+    <th>Team</th>
+    <th>Tournament</th>
+    <th>Player1</th>
+    <th>Player2</th>
+    <th>Player3</th>
+    <th>Player4</th>
+    <th>Player5</th>
+    <th>Player6</th>
+    <th>Player7</th>
+    <th>Player8</th>
+    <th>Player9</th>
+    <th>Player10</th>
+    <th>Player11</th>
+    <th>Player12</th>
+    <th>Player13</th>
+    <th>Player14</th>
+    <th>Player15</th>
+    <th>Player16</th>
+    <th>Player17</th>
+    <th>Player18</th>
+    <th>Player19</th>
+    <th>Player20</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @roasters.each do |roaster| %>
+  <tr>
+    <td><%= roaster.team.name %></td>
+    <td><%= roaster.tournament.name %></td>
+    <td><%= roaster.player1.name if roaster.player1 %></td>
+    <td><%= roaster.player2.name if roaster.player2 %></td>
+    <td><%= roaster.player3.name if roaster.player3 %></td>
+    <td><%= roaster.player4.name if roaster.player4 %></td>
+    <td><%= roaster.player5.name if roaster.player5 %></td>
+    <td><%= roaster.player6.name if roaster.player6 %></td>
+    <td><%= roaster.player7.name if roaster.player7 %></td>
+    <td><%= roaster.player8.name if roaster.player8 %></td>
+    <td><%= roaster.player9.name if roaster.player9 %></td>
+    <td><%= roaster.player10.name if roaster.player10 %></td>
+    <td><%= roaster.player11.name if roaster.player11 %></td>
+    <td><%= roaster.player12.name if roaster.player12 %></td>
+    <td><%= roaster.player13.name if roaster.player14 %></td>
+    <td><%= roaster.player14.name if roaster.player15 %></td>
+    <td><%= roaster.player15.name if roaster.player15 %></td>
+    <td><%= roaster.player16.name if roaster.player16 %></td>
+    <td><%= roaster.player17.name if roaster.player17 %></td>
+    <td><%= roaster.player18.name if roaster.player18 %></td>
+    <td><%= roaster.player19.name if roaster.player19 %></td>
+    <td><%= roaster.player20.name if roaster.player20 %></td>
+    <td><%= link_to 'Show', roaster %></td>
+    <td><%= link_to 'Edit', edit_roaster_path(roaster) %></td>
+    <td><%= link_to 'Destroy', roaster, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Roaster', new_roaster_path %>
